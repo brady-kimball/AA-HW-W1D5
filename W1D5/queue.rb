@@ -1,17 +1,17 @@
 class Queue
   def initialize
-    #initialize queue
+    @cue = []
   end
 
   def enqueue(el)
-    #pushes variable to end of queue
+    @cue.push(el)
   end
 
   def dequeue
-    #shifts variable from front of queue
+    @cue.shift
   end
 
   def show
-    #returns queue
+    @cue
   end
 end
