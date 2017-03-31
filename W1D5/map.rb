@@ -1,22 +1,29 @@
 class Map
   def initialize
-    #initializes variables
+    @pairs = []
   end
 
   def assign(key, value)
-    # Assigns key value pair if key doesn't exist
-    # Updates key value pair if key does exist
+    @pairs.push([key, value]) unless lookup(key)
+
+    @pairs.map! do |pair|
+      pair.first == key ? [key, value] : pair
+    end
   end
 
   def lookup(key)
-    # lookup key and return value, or nil if key isn't found
+    @pairs.each do |pair|
+      return pair.last if pair.first == key
+    end
+
+    nil
   end
 
   def remove(key)
-    # delete key value pair from map
+    @pairs.delete_if { |pair| pair.first == key }
   end
 
   def show
-    # return list of keys/values
+    @pairs
   end
 end
